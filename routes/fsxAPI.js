@@ -8,6 +8,7 @@ AWS.config.update({region: 'us-east-1'});
 var fsx = new AWS.FSx({apiVersion: '2018-03-01'});
 
 router.get("/list", (req,res)=>{
+   console.log("LIST API REQUEST MADE")
     fsx.describeFileSystems(params, function(err, data) {
         if (err){
             console.log(err, err.stack) // an error occurred
@@ -19,13 +20,16 @@ router.get("/list", (req,res)=>{
 
     })
 })
-router.post("/delete", (req,res)=>{
+router.get("/delete", (req,res)=>{
+   console.log("POST DELETE API REQUEST MADE")
+   console.log(req.query.FileSystemId)
     var params = {
-        FileSystemId: req.body.FileSystemId
+        FileSystemId: req.query.FileSystemId
        };
        fsx.deleteFileSystem(params, function(err, data) {
          if (err){
-            console.log(err, err.stack); // an error occurred
+            console.log(err, err.stack);
+            res.send(err) // an error occurred
          } 
          else{
             console.log(data);  
