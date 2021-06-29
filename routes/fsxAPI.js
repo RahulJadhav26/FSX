@@ -37,39 +37,14 @@ router.get("/delete", (req,res)=>{
          }
        });
 })
-router.get("/create", (req,res)=>{
-    var params = {
-        ClientRequestToken: "a8ca07e4-61ec-4399-99f4-19853801bcd5", 
-        FileSystemType: "WINDOWS", 
-        KmsKeyId: "arn:aws:kms:us-east-1:012345678912:key/1111abcd-2222-3333-4444-55556666eeff", 
-        SecurityGroupIds: [
-           "sg-edcd9784"
-        ], 
-        StorageCapacity: 3200, 
-        StorageType: "SSD", 
-        SubnetIds: [
-           "subnet-1234abcd"
-        ], 
-        Tags: [
-           {
-          Key: "Name", 
-          Value: "MyFileSystem"
-         }
-        ], 
-        WindowsConfiguration: {
-         ActiveDirectoryId: "d-1234abcd12", 
-         Aliases: [
-            "accounting.corp.example.com"
-         ], 
-         AutomaticBackupRetentionDays: 30, 
-         DailyAutomaticBackupStartTime: "05:00", 
-         ThroughputCapacity: 32, 
-         WeeklyMaintenanceStartTime: "1:05:00"
-        }
-       };
+router.post("/create", (req,res)=>{
+   console.log("POST API FOR CREATING FILE SYSTEM REQUESTED")
+   console.log(req.body)
+   var params = req.body
        fsx.createFileSystem(params, function(err, data) {
          if (err){
             console.log(err, err.stack); // an error occurred
+            res.send(err)
          }
          else{
             console.log(data);
