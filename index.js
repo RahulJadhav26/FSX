@@ -6,12 +6,14 @@ const dotenv =require('dotenv')
 dotenv.config()
 const app = express()
 const routes = require('./routes/fsxAPI')
+const routes1 = require('./routes/s3API')
 // Middleware
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
 app.use('/fsx', routes)
+app.use('/s3', routes1)
 
 app.get("/", (req,res)=>{
     res.status(200).send("Welcome to FSX Server")
