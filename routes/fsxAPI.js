@@ -8,7 +8,7 @@ AWS.config.update({region: 'us-east-1'});
 var fsx = new AWS.FSx({apiVersion: '2018-03-01'});
 
 router.get("/list", (req,res)=>{
-   console.log("LIST API REQUEST MADE")
+   console.log("FSX LIST API REQUEST MADE")
     fsx.describeFileSystems(params, function(err, data) {
         if (err){
             console.log(err, err.stack) // an error occurred
