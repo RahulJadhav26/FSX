@@ -22,7 +22,7 @@ router.get("/list", (req,res)=>{
 })
 router.post("/list", (req,res)=>{
    console.log("FSX LIST BY ID API REQUEST MADE")
-   var params = req.body
+   var params = req.body 
     fsx.describeFileSystems(params, function(err, data) {
         if (err){
             console.log(err, err.stack) // an error occurred
