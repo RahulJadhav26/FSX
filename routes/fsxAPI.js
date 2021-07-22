@@ -20,6 +20,20 @@ router.get("/list", (req,res)=>{
 
     })
 })
+router.post("/list", (req,res)=>{
+   console.log("FSX LIST BY ID API REQUEST MADE")
+   var params = req.body
+    fsx.describeFileSystems(params, function(err, data) {
+        if (err){
+            console.log(err, err.stack) // an error occurred
+        }
+        else{
+            console.log(data)
+            res.send(data)           // successful response
+        }
+
+    })
+})
 router.get("/delete", (req,res)=>{
    console.log("POST DELETE API REQUEST MADE")
    console.log(req.query.FileSystemId)
