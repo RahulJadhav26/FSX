@@ -10,7 +10,7 @@ router.post("/sendCommand", (req,res)=>{
     var params = req.body
     console.log(params)
   ssm.sendCommand(params, function(err, data) {
-    if (err) res.send(err, err.stack); // an error occurred
+    if (err) res.send(err); // an error occurred
     else     res.send(data);           // successful response
   })
 })
