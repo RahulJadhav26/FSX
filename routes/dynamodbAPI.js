@@ -46,6 +46,7 @@ router.post("/delete",(req,res)=>{
         }
     });
 })
+module.exports = router
 
 router.get('/list', (req,res)=>{
     var obj = req.body

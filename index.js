@@ -9,6 +9,7 @@ const routes = require('./routes/fsxAPI')
 const routes1 = require('./routes/s3API')
 const routes2 = require('./routes/ec2API')
 const routes3 = require('./routes/ssmAPI')
+const routes4 = require('./routes/dynamodbAPI')
 // Middleware
 
 app.use(bodyParser.json())
@@ -18,6 +19,7 @@ app.use('/fsx', routes)
 app.use('/s3', routes1)
 app.use('/ec2', routes2)
 app.use('/ssm', routes3)
+app.use('/dynamodb', routes4)
 
 app.get("/", (req,res)=>{
     res.status(200).send("Welcome to FSX Server")
