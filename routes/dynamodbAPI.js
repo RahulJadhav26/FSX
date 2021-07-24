@@ -3,7 +3,7 @@ const router = express.Router()
 var AWS = require("aws-sdk");
 
 AWS.config.update({
-  region: "us-west-2",
+  region: "us-east-1",
   endpoint: "http://dynamodb.us-east-1.amazon.com"
 });
 
